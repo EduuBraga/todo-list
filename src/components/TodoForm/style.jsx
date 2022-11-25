@@ -16,7 +16,7 @@ export const Form = styled.form`
     padding: 15px;
     border: none;
     border-radius: 4px;
-    box-shadow: #dcd 0px 1px 3px 0px;
+    box-shadow: #ccc 0px 1px 3px 0px;
     background-color: #f7f7f7;
 
     &:focus {

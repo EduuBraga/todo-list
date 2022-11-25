@@ -16,7 +16,7 @@ export const Container = styled.li`
 
   margin: 7px 0px;
   padding: 10px;
-  box-shadow: #dcd 0px 1px 3px 0px;
+  box-shadow: #ccc 0px 1px 3px 0px;
   color: #404040;
   border-radius: 4px;
   background-color: #f7f7f7;
