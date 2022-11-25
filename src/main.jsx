@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import { TodoProvider } from './provider';
+import { Page } from './components/Page/index';
+import { GlobalStyle } from './styles/GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <TodoProvider>
+    <Page />
+    <GlobalStyle />
+  </TodoProvider>
 )
