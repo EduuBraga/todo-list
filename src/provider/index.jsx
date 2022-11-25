@@ -10,10 +10,11 @@ export const TodoProvider = ({ children }) => {
   const [idTask, setIdTask] = useState(0);
   const [quantityTasksDone, setQuantityTasksDone] = useState(0);
 
-  const addItemList = (descriptionTask) => {
+  const addItemList = (descriptionTask, dateTask) => {
     const task = {
       id: idTask,
       description: descriptionTask,
+      date: dateTask,
       done: false,
       important: false
     };
@@ -52,6 +53,7 @@ export const TodoProvider = ({ children }) => {
     setTasksDone(FilteredTasksDone)
     setTasksNotDone(FilteredTasksNotDone)
     setQuantityTasksDone(FilteredTasksDone.length)
+    console.log(list)
   }, [list])
 
   //Lidando com estados da pesquisa

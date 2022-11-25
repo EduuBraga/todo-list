@@ -8,7 +8,7 @@ export const Container = styled.section`
 export const Form = styled.form`
   margin: 0 auto;
   display: grid;
-  grid: auto / 1fr auto;
+  grid: auto / 1fr auto auto;
   gap: 5px;
   width: 95vw;
   
