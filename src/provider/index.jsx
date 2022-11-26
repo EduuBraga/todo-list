@@ -10,13 +10,13 @@ export const TodoProvider = ({ children }) => {
   const [idTask, setIdTask] = useState(0);
   const [quantityTasksDone, setQuantityTasksDone] = useState(0);
 
-  const addItemList = (descriptionTask, dateTask) => {
+  const addItemList = (descriptionTask, dateTask, Importance) => {
     const task = {
       id: idTask,
       description: descriptionTask,
       date: dateTask,
       done: false,
-      important: false
+      importance: Importance
     };
 
     setList([...list, task]);

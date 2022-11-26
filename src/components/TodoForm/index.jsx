@@ -5,45 +5,50 @@ import { Container, Form, ButtonForm } from "./style";
 
 export const TodoForm = () => {
   const { addItemList } = useContext(TodoContext);
+
   const [valueInputTask, setValueInputTask] = useState('');
-  const [dateTask, setDateTask] = useState(null);
+  const [valueInputImportance, setValueInputImportance] = useState(1);
+  const [dateTask, setDateTask] = useState('');
   const [buttonIsClickable, setButtonIsClickable] = useState(false);
 
   function handleValueInput(event) {
     let text = event.target.value;
     setValueInputTask(text);
 
-    if (text !== '') {
-      setButtonIsClickable(true);
-    } else {
-      setButtonIsClickable(false);
-    }
+    text !== '' ? setButtonIsClickable(true) : setButtonIsClickable(false);
   }
 
-  function handleCurrentDate(){
-    let currentDate = new Date().toLocaleDateString()
-    setDateTask(currentDate)
+  function handleValueSelectImportance(event) {
+    const valueSelect = event.target.value;
+    const valueStringToNumber = Number(valueSelect);
+
+    setValueInputImportance(valueStringToNumber);
   }
 
-  function handleNewTask(event) {
+  function handleCurrentDate() {
+    let currentDate = new Date().toLocaleDateString();
+    setDateTask(currentDate);
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    handleCurrentDate()
+    handleCurrentDate();
 
     if (valueInputTask) {
-      addItemList(valueInputTask, dateTask);
+      addItemList(valueInputTask, dateTask, valueInputImportance);
       setValueInputTask('');
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     let currentDate = new Date().toLocaleDateString()
     setDateTask(currentDate)
   }, [])
 
   return (
     <Container>
-      <Form className="form">
+      <Form onSubmit={handleSubmit}>
         <input
           type="text"
           name="task"
@@ -52,11 +57,20 @@ export const TodoForm = () => {
           placeholder='Adicionar uma tarefa'
         />
 
-        <ButtonForm
-          isClickable={buttonIsClickable}
-          title="Adicionar tarefa"
-          onClick={handleNewTask}
-        >
+        <label>
+          Importância
+          <select name="importance" onChange={handleValueSelectImportance}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </label>
+
+        <ButtonForm isClickable={buttonIsClickable} title="Adicionar tarefa">
           Adicionar
         </ButtonForm>
       </Form>
