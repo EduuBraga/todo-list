@@ -53,7 +53,6 @@ export const TodoProvider = ({ children }) => {
     setTasksDone(FilteredTasksDone)
     setTasksNotDone(FilteredTasksNotDone)
     setQuantityTasksDone(FilteredTasksDone.length)
-    console.log(list)
   }, [list])
 
   //Lidando com estados da pesquisa

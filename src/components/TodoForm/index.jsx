@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { TodoContext } from "../../provider";
 
 import { Container, Form, ButtonForm } from "./style";
@@ -6,7 +6,7 @@ import { Container, Form, ButtonForm } from "./style";
 export const TodoForm = () => {
   const { addItemList } = useContext(TodoContext);
   const [valueInputTask, setValueInputTask] = useState('');
-  const [valueInputDate, setValueInputdate] = useState(null);
+  const [dateTask, setDateTask] = useState(null);
   const [buttonIsClickable, setButtonIsClickable] = useState(false);
 
   function handleValueInput(event) {
@@ -20,19 +20,26 @@ export const TodoForm = () => {
     }
   }
 
-  function handleValueInputDate(event) {
-    let { value } = event.target
-    setValueInputdate(value)
+  function handleCurrentDate(){
+    let currentDate = new Date().toLocaleDateString()
+    setDateTask(currentDate)
   }
 
   function handleNewTask(event) {
     event.preventDefault();
 
+    handleCurrentDate()
+
     if (valueInputTask) {
-      addItemList(valueInputTask, valueInputDate);
+      addItemList(valueInputTask, dateTask);
       setValueInputTask('');
     }
   }
+
+  useEffect(()=>{
+    let currentDate = new Date().toLocaleDateString()
+    setDateTask(currentDate)
+  }, [])
 
   return (
     <Container>
@@ -43,12 +50,6 @@ export const TodoForm = () => {
           onChange={handleValueInput}
           value={valueInputTask}
           placeholder='Adicionar uma tarefa'
-        />
-
-        <input
-          type="date"
-          name="date"
-          onChange={handleValueInputDate}
         />
 
         <ButtonForm
