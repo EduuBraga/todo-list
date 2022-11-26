@@ -5,18 +5,21 @@ import imgCheckOnURL from '../../assets/check-on.png';
 import imgTrashURL from '../../assets/trash.png';
 import imgTrashRedURL from '../../assets/trash-red.png';
 
-import { ItemDone, ButtonCheck, ButtonTrash } from './style';
+import { ItemDone, ButtonCheck, ButtonTrash, ContentTask } from './style';
 
 export const TasksDone = ({ task }) => {
   const { toggleDoneTask, removeItemList } = useContext(TodoContext);
 
   return (
-    <ItemDone key={task.id} taskDone={task.done}>
+    <ItemDone key={task.id}>
       <ButtonCheck onClick={() => { toggleDoneTask(task.id) }}>
           <img alt='tarefa finalizada' src={imgCheckOnURL} />
       </ButtonCheck>
 
-      {task.description}
+      <ContentTask taskDone={task.done}>
+        <p>{task.description}</p>
+        <p>{task.date}</p>
+      </ContentTask>
 
       <ButtonTrash onClick={() => { removeItemList(task.id) }}>
         <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />

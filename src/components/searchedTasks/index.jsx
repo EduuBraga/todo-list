@@ -13,7 +13,8 @@ import {
   ButtonCheck,
   ButtonTrash,
   ContainerWithoutResult,
-  FeedbackSearch
+  FeedbackSearch,
+  ContentTask
 } from "./style";
 
 export const SearchedTasks = () => {
@@ -31,7 +32,7 @@ export const SearchedTasks = () => {
       {listTasksSearched.length >= 1 ? (
         <ContainerResultSearch>
           {listTasksSearched.map(task =>
-            <ItemListSearched key={task.id} taskDone={task.done}>
+            <ItemListSearched key={task.id}>
               <ButtonCheck onClick={() => { toggleDoneTask(task.id) }}>
                 {task.done ? (
                   <img alt='tarefa finalizada' src={imgCheckOnURL} />
@@ -40,7 +41,10 @@ export const SearchedTasks = () => {
                 )}
               </ButtonCheck>
 
-              {task.description}
+              <ContentTask  taskDone={task.done}>
+                <p>{task.description}</p>
+                <p>{task.date}</p>
+              </ContentTask>
 
               <ButtonTrash onClick={() => { removeItemList(task.id) }}>
                 <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />

@@ -33,13 +33,27 @@ export const ItemListSearched = styled.li`
   word-wrap: break-word; 
   word-break: break-word;
 
-  text-decoration: ${({ taskDone }) => taskDone ? 'line-through' : ''};  
   animation: ${moveUpDown} 0.3s ease;
   transition: background 0.2s;
   position: relative;
 
   &:hover {
     background-color: #efefef;
+  }
+`
+
+export const ContentTask = styled.div`
+  display: grid;
+  grid-template: auto / 88% 12%;
+  align-items: center;
+
+  p:nth-child(1){
+    text-decoration: ${({ taskDone }) => taskDone ? 'line-through' : ''}; 
+  }
+
+  p:nth-child(2){
+    text-align: center;
+    font-size: 13px;
   }
 `
 

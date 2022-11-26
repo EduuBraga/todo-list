@@ -26,13 +26,23 @@ export const Container = styled.li`
   word-wrap: break-word; 
   word-break: break-word;
 
-  text-decoration: ${({ taskDone }) => taskDone ? 'line-through' : ''};  
   animation: ${moveUpDown} 0.3s ease;
   transition: background 0.2s;
   position: relative;
 
   &:hover {
     background-color: #efefef;
+  }
+`
+
+export const ContentTask = styled.div`
+  display: grid;
+  grid-template: auto / 88% 12%;
+  align-items: center;
+
+  p:nth-child(2){
+    text-align: center;
+    font-size: 13px;
   }
 `
 
@@ -75,6 +85,7 @@ export const ButtonTrash = styled.button`
   background-color: #00000000;
   border: none;
   cursor: pointer;
+  margin-left: 10px;
 
   img:nth-child(1){
     cursor: pointer;
