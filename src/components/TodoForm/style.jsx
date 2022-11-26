@@ -11,25 +11,41 @@ export const Form = styled.form`
   grid: auto / 1fr auto auto;
   gap: 5px;
   width: 95vw;
-  
-  input{
-    padding: 15px;
+`
+
+export const InputTask = styled.input`
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: #ccc 0px 1px 3px 0px;
+  background-color: #f7f7f7;
+  outline: none;
+
+  &::placeholder{
+    color: #3071e1;
+  }
+
+  &:focus::placeholder {
+    color: #303030;
+  }
+`
+
+export const SelectedImportanceTask = styled.select`
+  padding: 10px; 
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  box-shadow: #ccc 0px 1px 3px 0px;
+  background-color: #f7f7f7;
+  font-size: 13px;
+  color: #3071e1;
+
+  &:focus{
+    color: #303030;
+  }
+
+  option{
     border: none;
-    border-radius: 4px;
-    box-shadow: #ccc 0px 1px 3px 0px;
-    background-color: #f7f7f7;
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder{
-      color: #3071e1;
-    }
-
-    &:focus::placeholder {
-      color: #000000;
-    }
   }
 `
 

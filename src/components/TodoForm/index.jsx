@@ -1,7 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { TodoContext } from "../../provider";
 
-import { Container, Form, ButtonForm } from "./style";
+import {
+  Container,
+  Form,
+  ButtonForm,
+  InputTask,
+  SelectedImportanceTask
+} from "./style";
 
 export const TodoForm = () => {
   const { addItemList } = useContext(TodoContext);
@@ -49,7 +55,7 @@ export const TodoForm = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <input
+        <InputTask
           type="text"
           name="task"
           onChange={handleValueInput}
@@ -57,18 +63,19 @@ export const TodoForm = () => {
           placeholder='Adicionar uma tarefa'
         />
 
-        <label>
-          Importância
-          <select name="importance" onChange={handleValueSelectImportance}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
-        </label>
+        <SelectedImportanceTask
+          name="importance"
+          onChange={handleValueSelectImportance}
+        >
+          <option value="1">Importância</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </SelectedImportanceTask>
 
         <ButtonForm isClickable={buttonIsClickable} title="Adicionar tarefa">
           Adicionar
