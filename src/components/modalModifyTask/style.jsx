@@ -1,5 +1,13 @@
 import styled, { keyframes } from 'styled-components';
 
+const OpacityAnimation = keyframes`
+  0%{
+    opacity: 0.3;
+  }100%{
+    opacity: 1;
+  }
+`
+
 export const Container = styled.section`
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -19,6 +27,7 @@ export const Card = styled.form`
   border-radius: 8px;
   min-width: 350px;
   position: relative;
+  animation: ${OpacityAnimation} 0.3s ease-in-out;
 
   display: flex;
   flex-direction: column;
@@ -80,7 +89,6 @@ export const SelectedImportanceTask = styled.select`
 
 export const Button = styled.button`
   cursor: pointer;
-  /* align-self: flex-end; */
   border-radius: 4px;
   color: #3071e1;
   border: none;
