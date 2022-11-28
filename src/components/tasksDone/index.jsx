@@ -15,10 +15,14 @@ import {
 } from './style';
 
 export const TasksDone = ({ task }) => {
-  const { toggleDoneTask, removeItemList } = useContext(TodoContext);
+  const {
+    toggleDoneTask,
+    removeItemList,
+    modifyTask
+  } = useContext(TodoContext);
 
   return (
-    <ItemDone key={task.id}>
+    <ItemDone key={task.id} onClick={_ => (modifyTask(event, task.id))}>
       <ButtonCheck onClick={() => { toggleDoneTask(task.id) }}>
           <img alt='tarefa finalizada' src={imgCheckOnURL} />
       </ButtonCheck>

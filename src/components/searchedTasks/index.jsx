@@ -24,17 +24,18 @@ export const SearchedTasks = () => {
     listTasksSearched,
     toggleDoneTask,
     removeItemList,
-    inputSearch
+    inputSearch,
+    modifyTask
   } = useContext(TodoContext);
 
   return (
     <>
-      <FeedbackSearch>Pesquisando por <i>"</i>{inputSearch}<i>"</i></FeedbackSearch>
+      <FeedbackSearch>Pesquisando por "{inputSearch}"</FeedbackSearch>
 
       {listTasksSearched.length >= 1 ? (
         <ContainerResultSearch>
           {listTasksSearched.map(task =>
-            <ItemListSearched key={task.id}>
+            <ItemListSearched key={task.id} onClick={_ => (modifyTask(event, task.id))}>
               <ButtonCheck onClick={() => { toggleDoneTask(task.id) }}>
                 {task.done ? (
                   <img alt='tarefa finalizada' src={imgCheckOnURL} />

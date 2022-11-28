@@ -14,6 +14,7 @@ export const ItemDone = styled.li`
   align-items: center;
   gap: 2px;
 
+  cursor: pointer;
   margin: 7px 0px;
   padding: 10px;
   box-shadow: #ccc 0px 1px 3px 0px;

@@ -7,14 +7,24 @@ import imgTrashURL from '../../assets/trash.png';
 import imgTrashRedURL from '../../assets/trash-red.png';
 import imgFlagURL from '../../assets/flag.png';
 
-import { Container, ButtonCheck, ButtonTrash, ContentMain, StatusTask } from './style';
+import {
+  Container,
+  ButtonCheck,
+  ButtonTrash,
+  ContentMain,
+  StatusTask
+} from './style';
 
 export const TasksNotDone = ({ task }) => {
-  const { toggleDoneTask, removeItemList } = useContext(TodoContext);
+  const {
+    toggleDoneTask,
+    removeItemList,
+    modifyTask
+  } = useContext(TodoContext);
 
   return (
-    <Container key={task.id}>
-      <ButtonCheck onClick={() => { toggleDoneTask(task.id) }}>
+    <Container key={task.id} onClick={_ => (modifyTask(event, task.id))}>
+      <ButtonCheck onClick={_ => { toggleDoneTask(task.id) }}>
         <img alt='tarefa não finalizada' src={imgCheckOffURL} />
         <img alt='tarefa não finalizada' src={imgCheckHoverURL} />
       </ButtonCheck>
@@ -32,7 +42,7 @@ export const TasksNotDone = ({ task }) => {
         </StatusTask>
       </ContentMain>
 
-      <ButtonTrash onClick={() => { removeItemList(task.id) }}>
+      <ButtonTrash onClick={_ => { removeItemList(task.id) }}>
         <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
         <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
       </ButtonTrash>
