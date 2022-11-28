@@ -120,26 +120,17 @@ export const TodoProvider = ({ children }) => {
     setSelectModaModifyTask(event.target.value);
   }
 
-  useEffect(() => {
-    DealingWithTasksNotDone();
-    DealingWithTasksDone();
-  }, [list, taskModify])
-
-  //Lidando com estados da pesquisa
+  //Lidando com estados do campo de pesquisa
   const [inputSearch, setInputSearch] = useState('');
   const [modeSearch, setModeSearch] = useState(false);
   const [listTasksSearched, setListTasksSearched] = useState([]);
 
-  const handleValueInputSearch = (event) => {
-    const valueInput = event.target.value;
-    setInputSearch(valueInput);
-    setModeSearch(true);
-
+  const DealingWithTasksSearch = () => {
     const listCopy = [...list];
 
     const tasksMatchSearch = listCopy.filter(task => {
       let descriptionTaskLowerCase = task.description.toLowerCase();
-      let valueInputLowerCase = valueInput.toLowerCase();
+      let valueInputLowerCase = inputSearch.toLowerCase();
 
       if (descriptionTaskLowerCase.includes(valueInputLowerCase)) {
         return task;
@@ -151,6 +142,20 @@ export const TodoProvider = ({ children }) => {
 
     setListTasksSearched(OrderTasksMatchByImportance);
   }
+
+  const handleValueInputSearch = (event) => {
+    const valueInput = event.target.value;
+    setInputSearch(valueInput);
+    setModeSearch(true);
+
+    DealingWithTasksSearch();
+  }
+
+  useEffect(() => {
+    DealingWithTasksNotDone();
+    DealingWithTasksDone();
+    DealingWithTasksSearch();
+  }, [list, taskModify])
 
   return (
     <TodoContext.Provider value={{
