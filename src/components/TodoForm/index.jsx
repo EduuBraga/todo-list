@@ -44,6 +44,7 @@ export const TodoForm = () => {
     if (valueInputTask) {
       addItemList(valueInputTask, dateTask, valueInputImportance);
       setValueInputTask('');
+      setButtonIsClickable(false)
     }
   }
 
