@@ -71,31 +71,22 @@ export const TodoProvider = ({ children }) => {
   const [inputModalModifyTask, setInputModalModifyTask] = useState('')
   const [selectModalModifyTask, setSelectModaModifyTask] = useState('')
 
-  const modifyTask = event => {
-    const idElementClicked = Number(event.target.id)
+  const modifyTask = (event, idElementClicked) => {
     const TagNameElementClicked = event.target.tagName
 
     if(TagNameElementClicked !== 'IMG'){
       const listCopy = [...list];
 
       const filteredTaskClicked = listCopy
-        .filter(({ id }) => id === idElementClicked)[0];
+        .filter(task => task.id === idElementClicked)[0];
   
-      const taskClicked = { ...filteredTaskClicked }
+      const taskClicked = { ...filteredTaskClicked };
   
       setModalModifyTaskIsVisible(true);
       setInputModalModifyTask(taskClicked.description);
       setSelectModaModifyTask(taskClicked.importance);
       setTaskModify(taskClicked);
     }
-  }
-
-  const handleInputText = event => {
-    setInputModalModifyTask(event.target.value);
-  }
-
-  const handleValueSelectImportance = event => {
-    setSelectModaModifyTask(event.target.value);
   }
 
   const handleSubmitModal = event => {
@@ -113,6 +104,14 @@ export const TodoProvider = ({ children }) => {
     });
 
     setModalModifyTaskIsVisible(false)
+  }
+
+  const handleInputText = event => {
+    setInputModalModifyTask(event.target.value);
+  }
+
+  const handleValueSelectImportance = event => {
+    setSelectModaModifyTask(event.target.value);
   }
 
   useEffect(() => {
