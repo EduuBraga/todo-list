@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { TodoContext } from "../../provider";
 
+import imgCheckOffURL from '../../assets/check-off.png';
+import imgCheckOnURL from '../../assets/check-on.png';
 import imgCloseURL from '../../assets/close.png';
 
 import {
@@ -11,7 +13,8 @@ import {
   InputTask,
   ContainerInputText,
   ContainerSelectImportance,
-  ImgClose
+  ContainerBottom,
+  ContainerTop
 } from "./style";
 
 export const ModalModifyTask = () => {
@@ -21,12 +24,24 @@ export const ModalModifyTask = () => {
     handleInputText,
     handleSubmitModal,
     handleValueSelectImportance,
-    setModalModifyTaskIsVisible
+    setModalModifyTaskIsVisible,
+    taskDoneOrNotDone,
+    toggleTaskDoneOrNotDone
   } = useContext(TodoContext);
 
   return (
     <Container>
       <Card onSubmit={handleSubmitModal}>
+        <ContainerTop>
+          <h2>Modificar Tarefa</h2>
+
+          <img
+            onClick={_ => { setModalModifyTaskIsVisible(false) }}
+            src={imgCloseURL}
+            alt="Fechar modal"
+          />
+        </ContainerTop>
+
         <ContainerInputText>
           <label>Descrição</label>
 
@@ -55,13 +70,19 @@ export const ModalModifyTask = () => {
           </SelectedImportanceTask>
         </ContainerSelectImportance>
 
-        <Button>Mudar Tarefa</Button>
+        <ContainerBottom>
+          <div>
+            <p>Finalizada: </p>
 
-        <ImgClose
-          onClick={_ => { setModalModifyTaskIsVisible(false) }}
-          src={imgCloseURL}
-          alt="Fechar modal"
-        />
+            {taskDoneOrNotDone ? (
+              <img src={imgCheckOnURL} alt="" onClick={toggleTaskDoneOrNotDone} />
+            ) : (
+              <img src={imgCheckOffURL} alt="" onClick={toggleTaskDoneOrNotDone} />
+            )}
+          </div>
+
+          <Button>Mudar Tarefa</Button>
+        </ContainerBottom>
       </Card>
     </Container>
   );

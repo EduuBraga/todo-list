@@ -23,29 +23,53 @@ export const Container = styled.section`
 
 export const Card = styled.form`
   background-color: #f3f2f1;
-  padding: 40px 18px 24px 18px;
   border-radius: 8px;
-  min-width: 350px;
+  width: 500px;
   position: relative;
   animation: ${OpacityAnimation} 0.3s ease-in-out;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
+`
+
+export const ContainerTop = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #90909040;
+
+  img{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+
+    &:active{
+      transform: scale(0.90);
+    }
+  }
+
+  h2{
+    font-size: 1.5em;
+    color: #303030;
+  }
 `
 
 export const ContainerInputText = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 10px 30px 18px 30px;
   gap: 4px;
   width: 100% ;
 
   label{
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.7px;
     color: #303030;
   }
 `
@@ -57,18 +81,20 @@ export const InputTask = styled.input`
   box-shadow: #ccc 0px 1px 3px 0px;
   background-color: #f7f7f7;
   outline: none;
-  color: #303030;
+  color: #101010;
+  font-weight: 500;
 `
 
 export const ContainerSelectImportance = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 10px 30px 18px 30px;
   gap: 4px;
   width: 100% ;
 
   label{
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #303030;
@@ -76,15 +102,42 @@ export const ContainerSelectImportance = styled.div`
 `
 
 export const SelectedImportanceTask = styled.select`
-  padding: 10px; 
+  padding: 15px;
   border: none;
   outline: none;
   border-radius: 4px;
   box-shadow: #ccc 0px 1px 3px 0px;
   background-color: #f7f7f7;
   font-size: 13px;
-  color: #303030;
+  color: #101010;
+  font-weight: 500;
   cursor: pointer;
+`
+
+export const ContainerBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 10px 30px 18px 30px;
+
+  div{
+    display: flex;
+    gap: 12px;
+
+    p{
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #303030;
+    }
+
+    img{
+      width: 17px;
+      height: 17px;
+    }
+  }
 `
 
 export const Button = styled.button`
@@ -99,19 +152,6 @@ export const Button = styled.button`
   transition: background 0.3s;
 
   &:hover{
-    background-color: #efefef;
-  }
-`
-
-export const ImgClose = styled.img`
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-
-  &:active{
-    transform: scale(0.90);
+    background-color: #eff1fa;
   }
 `

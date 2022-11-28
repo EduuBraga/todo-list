@@ -70,6 +70,7 @@ export const TodoProvider = ({ children }) => {
   const [modalModifyTaskIsVisible, setModalModifyTaskIsVisible] = useState(false)
   const [inputModalModifyTask, setInputModalModifyTask] = useState('')
   const [selectModalModifyTask, setSelectModaModifyTask] = useState('')
+  const [taskDoneOrNotDone, setTaskDoneOrNotDone] = useState(false)
 
   const modifyTask = (event, idElementClicked) => {
     const TagNameElementClicked = event.target.tagName
@@ -85,6 +86,7 @@ export const TodoProvider = ({ children }) => {
       setModalModifyTaskIsVisible(true);
       setInputModalModifyTask(taskClicked.description);
       setSelectModaModifyTask(taskClicked.importance);
+      setTaskDoneOrNotDone(taskClicked.done)
       setTaskModify(taskClicked);
     }
   }
@@ -98,12 +100,16 @@ export const TodoProvider = ({ children }) => {
         task.date = taskModify.date;
         task.description = inputModalModifyTask;
         task.importance = Number(selectModalModifyTask);
-        task.done = taskModify.done;
+        task.done = taskDoneOrNotDone;
         setTaskModify({});
       }
     });
 
     setModalModifyTaskIsVisible(false)
+  }
+
+  const toggleTaskDoneOrNotDone = () => {
+    taskDoneOrNotDone ? setTaskDoneOrNotDone(false) : setTaskDoneOrNotDone(true)
   }
 
   const handleInputText = event => {
@@ -171,7 +177,9 @@ export const TodoProvider = ({ children }) => {
       handleSubmitModal,
       handleInputText,
       handleValueSelectImportance,
-      setModalModifyTaskIsVisible
+      setModalModifyTaskIsVisible,
+      taskDoneOrNotDone,
+      toggleTaskDoneOrNotDone
     }}>
       {children}
     </TodoContext.Provider>
