@@ -46,13 +46,28 @@ export const TodoProvider = ({ children }) => {
     setList(ReversingDoneItem)
   }
 
-  useEffect(() => {
-    const FilteredTasksDone = list.filter(task => task.done === true)
-    const FilteredTasksNotDone = list.filter(task => task.done === false)
+  const DealingWithTasksNotDone = () => {
+    const filteredTasksNotDone = list.filter(task => !task.done)
 
-    setTasksDone(FilteredTasksDone)
-    setTasksNotDone(FilteredTasksNotDone)
-    setQuantityTasksDone(FilteredTasksDone.length)
+    const orderTasksNotDoneByImportance = filteredTasksNotDone
+      .sort((task1, task2) => task2.importance - task1.importance)
+
+    setTasksNotDone(orderTasksNotDoneByImportance)
+  }
+
+  const DealingWithTasksDone = () => {
+    const filteredTasksDone = list.filter(task => task.done)
+
+    const orderTaskDoneByImportance = filteredTasksDone
+      .sort((task1, task2) => task2.importance - task1.importance)
+
+    setTasksDone(orderTaskDoneByImportance)
+    setQuantityTasksDone(filteredTasksDone.length)
+  }
+
+  useEffect(() => {
+    DealingWithTasksNotDone()
+    DealingWithTasksDone()
   }, [list])
 
   //Lidando com estados da pesquisa
