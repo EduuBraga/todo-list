@@ -24,74 +24,77 @@ export const TodoProvider = ({ children }) => {
   }
 
   const removeItemList = idElementClicked => {
-    const listCopy = [...list]
+    const listCopy = [...list];
 
     const filteredList = listCopy
-      .filter(itemList => itemList.id !== idElementClicked)
+      .filter(itemList => itemList.id !== idElementClicked);
 
-    setList(filteredList)
+    setList(filteredList);
   }
 
   const toggleDoneTask = idElementClicked => {
-    const listCopy = [...list]
+    const listCopy = [...list];
 
     const ReversingDoneItem = listCopy.map(itemList => {
       if (itemList.id === idElementClicked) {
-        itemList.done = !itemList.done
+        itemList.done = !itemList.done;
       }
 
-      return itemList
+      return itemList;
     })
 
-    setList(ReversingDoneItem)
+    setList(ReversingDoneItem);
   }
 
   const DealingWithTasksNotDone = () => {
-    const filteredTasksNotDone = list.filter(task => !task.done)
+    const filteredTasksNotDone = list.filter(task => !task.done);
 
     const orderTasksNotDoneByImportance = filteredTasksNotDone
-      .sort((task1, task2) => task2.importance - task1.importance)
+      .sort((task1, task2) => task2.importance - task1.importance);
 
-    setTasksNotDone(orderTasksNotDoneByImportance)
+    setTasksNotDone(orderTasksNotDoneByImportance);
   }
 
   const DealingWithTasksDone = () => {
-    const filteredTasksDone = list.filter(task => task.done)
+    const filteredTasksDone = list.filter(task => task.done);
 
     const orderTaskDoneByImportance = filteredTasksDone
-      .sort((task1, task2) => task2.importance - task1.importance)
+      .sort((task1, task2) => task2.importance - task1.importance);
 
-    setTasksDone(orderTaskDoneByImportance)
-    setQuantityTasksDone(filteredTasksDone.length)
+    setTasksDone(orderTaskDoneByImportance);
+    setQuantityTasksDone(filteredTasksDone.length);
   }
 
   useEffect(() => {
-    DealingWithTasksNotDone()
-    DealingWithTasksDone()
+    DealingWithTasksNotDone();
+    DealingWithTasksDone();
   }, [list])
 
   //Lidando com estados da pesquisa
-  const [inputSearch, setInputSearch] = useState('')
-  const [modeSearch, setModeSearch] = useState(false)
-  const [listTasksSearched, setListTasksSearched] = useState([])
+  const [inputSearch, setInputSearch] = useState('');
+  const [modeSearch, setModeSearch] = useState(false);
+  const [listTasksSearched, setListTasksSearched] = useState([]);
 
   const handleValueInputSearch = (event) => {
-    const valueInput = event.target.value
-    setInputSearch(valueInput)
-    setModeSearch(true)
+    const valueInput = event.target.value;
+    setInputSearch(valueInput);
+    setModeSearch(true);
 
-    const listCopy = [...list]
+    const listCopy = [...list];
 
     const tasksMatchSearch = listCopy.filter(task => {
-      let descriptionTask = task.description.toLowerCase()
-      let valueInputLower = valueInput.toLowerCase()
+      let descriptionTaskLowerCase = task.description.toLowerCase();
+      let valueInputLowerCase = valueInput.toLowerCase();
 
-      if (descriptionTask.includes(valueInputLower)) {
-        return task
+      if (descriptionTaskLowerCase.includes(valueInputLowerCase)) {
+        return task;
       }
     })
 
-    setListTasksSearched(tasksMatchSearch)
+    const OrderTasksMatchByImportance = tasksMatchSearch
+      .sort((task1, task2) => task2.importance - task1.importance);
+
+    setListTasksSearched(OrderTasksMatchByImportance);
   }
 
   return (
