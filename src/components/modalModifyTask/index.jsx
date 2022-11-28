@@ -1,29 +1,49 @@
-import React from "react";
+import React, { useContext } from 'react';
+import { TodoContext } from "../../provider";
 
-import { 
-  Card, 
-  Container, 
-  SelectedImportanceTask, 
-  Button, 
+import imgCloseURL from '../../assets/close.png';
+
+import {
+  Card,
+  Container,
+  SelectedImportanceTask,
+  Button,
   InputTask,
   ContainerInputText,
-  ContainerSelectImportance
+  ContainerSelectImportance,
+  ImgClose
 } from "./style";
 
 export const ModalModifyTask = () => {
+  const {
+    inputModalModifyTask,
+    selectModalModifyTask,
+    handleInputText,
+    handleSubmitModal,
+    handleValueSelectImportance,
+    setModalModifyTaskIsVisible
+  } = useContext(TodoContext);
+
   return (
     <Container>
-      <Card>
+      <Card onSubmit={handleSubmitModal}>
         <ContainerInputText>
           <label>Descrição</label>
-          <InputTask type='text' placeholder="Texto da Tarefa" />
+
+          <InputTask
+            onChange={handleInputText}
+            type='text'
+            placeholder="Texto da Tarefa"
+            value={inputModalModifyTask}
+          />
         </ContainerInputText>
 
         <ContainerSelectImportance>
           <label>Importância</label>
           <SelectedImportanceTask
             name="importance"
-            // onChange={handleValueSelectImportance}
+            value={selectModalModifyTask}
+            onChange={handleValueSelectImportance}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -36,6 +56,12 @@ export const ModalModifyTask = () => {
         </ContainerSelectImportance>
 
         <Button>Mudar Tarefa</Button>
+
+        <ImgClose
+          onClick={_ => { setModalModifyTaskIsVisible(false) }}
+          src={imgCloseURL}
+          alt="Fechar modal"
+        />
       </Card>
     </Container>
   );

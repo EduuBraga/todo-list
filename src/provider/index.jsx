@@ -65,10 +65,60 @@ export const TodoProvider = ({ children }) => {
     setQuantityTasksDone(filteredTasksDone.length);
   }
 
+  //Lidando com modal de modificar a tarefa
+  const [taskModify, setTaskModify] = useState({})
+  const [modalModifyTaskIsVisible, setModalModifyTaskIsVisible] = useState(false)
+  const [inputModalModifyTask, setInputModalModifyTask] = useState('')
+  const [selectModalModifyTask, setSelectModaModifyTask] = useState('')
+
+  const modifyTask = event => {
+    const idElementClicked = Number(event.target.id)
+    const TagNameElementClicked = event.target.tagName
+
+    if(TagNameElementClicked !== 'IMG'){
+      const listCopy = [...list];
+
+      const filteredTaskClicked = listCopy
+        .filter(({ id }) => id === idElementClicked)[0];
+  
+      const taskClicked = { ...filteredTaskClicked }
+  
+      setModalModifyTaskIsVisible(true);
+      setInputModalModifyTask(taskClicked.description);
+      setSelectModaModifyTask(taskClicked.importance);
+      setTaskModify(taskClicked);
+    }
+  }
+
+  const handleInputText = event => {
+    setInputModalModifyTask(event.target.value);
+  }
+
+  const handleValueSelectImportance = event => {
+    setSelectModaModifyTask(event.target.value);
+  }
+
+  const handleSubmitModal = event => {
+    event.preventDefault();
+
+    list.map(task => {
+      if(task.id === taskModify.id){
+        task.id = taskModify.id;
+        task.date = taskModify.date;
+        task.description = inputModalModifyTask;
+        task.importance = Number(selectModalModifyTask);
+        task.done = taskModify.done;
+        setTaskModify({});
+      }
+    });
+
+    setModalModifyTaskIsVisible(false)
+  }
+
   useEffect(() => {
     DealingWithTasksNotDone();
     DealingWithTasksDone();
-  }, [list])
+  }, [list, taskModify])
 
   //Lidando com estados da pesquisa
   const [inputSearch, setInputSearch] = useState('');
@@ -103,15 +153,26 @@ export const TodoProvider = ({ children }) => {
       addItemList,
       removeItemList,
       toggleDoneTask,
+      modifyTask,
       tasksDone,
       tasksNotDone,
       quantityTasksDone,
+      //Lidando com estados da pesquisa
       handleValueInputSearch,
       inputSearch,
       setInputSearch,
       modeSearch,
       setModeSearch,
-      listTasksSearched
+      listTasksSearched,
+      //Lidando com modal de modificar a tarefa
+      taskModify,
+      modalModifyTaskIsVisible,
+      inputModalModifyTask,
+      selectModalModifyTask,
+      handleSubmitModal,
+      handleInputText,
+      handleValueSelectImportance,
+      setModalModifyTaskIsVisible
     }}>
       {children}
     </TodoContext.Provider>

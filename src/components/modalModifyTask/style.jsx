@@ -6,15 +6,16 @@ export const Container = styled.section`
   width: 100vw;
   height: 100vh;
   background-color: #20202090;
+  z-index: 5;
 
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
-export const Card = styled.div`
+export const Card = styled.form`
   background-color: #f3f2f1;
-  padding: 24px 18px 24px 18px;
+  padding: 40px 18px 24px 18px;
   border-radius: 8px;
   min-width: 350px;
   position: relative;
@@ -79,7 +80,7 @@ export const SelectedImportanceTask = styled.select`
 
 export const Button = styled.button`
   cursor: pointer;
-  align-self: flex-end;
+  /* align-self: flex-end; */
   border-radius: 4px;
   color: #3071e1;
   border: none;
@@ -91,5 +92,18 @@ export const Button = styled.button`
 
   &:hover{
     background-color: #efefef;
+  }
+`
+
+export const ImgClose = styled.img`
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+
+  &:active{
+    transform: scale(0.90);
   }
 `
