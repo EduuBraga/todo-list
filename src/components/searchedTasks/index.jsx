@@ -6,6 +6,7 @@ import imgCheckOnURL from '../../assets/check-on.png';
 import imgTrashURL from '../../assets/trash.png';
 import imgTrashRedURL from '../../assets/trash-red.png';
 import imgDisappointedWomanURL from '../../assets/mulher-decepcionada.png';
+import imgFlagURL from '../../assets/flag.png';
 
 import {
   ContainerResultSearch,
@@ -14,7 +15,8 @@ import {
   ButtonTrash,
   ContainerWithoutResult,
   FeedbackSearch,
-  ContentTask
+  ContentMain,
+  StatusTask
 } from "./style";
 
 export const SearchedTasks = () => {
@@ -27,7 +29,7 @@ export const SearchedTasks = () => {
 
   return (
     <>
-      <FeedbackSearch>Pesquisando por "{inputSearch}"</FeedbackSearch>
+      <FeedbackSearch>Pesquisando por <i>"</i>{inputSearch}<i>"</i></FeedbackSearch>
 
       {listTasksSearched.length >= 1 ? (
         <ContainerResultSearch>
@@ -41,10 +43,18 @@ export const SearchedTasks = () => {
                 )}
               </ButtonCheck>
 
-              <ContentTask  taskDone={task.done}>
+              <ContentMain taskDone={task.done}>
                 <p>{task.description}</p>
-                <p>{task.date}</p>
-              </ContentTask>
+
+                <StatusTask>
+                  <p>{task.date}</p>
+                  |
+                  <p>
+                    {task.importance}
+                    <img src={imgFlagURL} alt="Bandeira" />
+                  </p>
+                </StatusTask>
+              </ContentMain>
 
               <ButtonTrash onClick={() => { removeItemList(task.id) }}>
                 <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />

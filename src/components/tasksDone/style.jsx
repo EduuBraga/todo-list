@@ -34,18 +34,32 @@ export const ItemDone = styled.li`
   }
 `
 
-export const ContentTask = styled.div`
-  display: grid;
-  grid-template: auto / 88% 12%;
-  align-items: center;
+export const ContentMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
-  p:nth-child(1){
+  & > p{
     text-decoration: ${({ taskDone }) => taskDone ? 'line-through' : ''}; 
   }
+`
+
+export const StatusTask = styled.div`
+ display: flex;
+  gap: 10px;
+  text-align: center;
+  font-size: 12px;
 
   p:nth-child(2){
-    text-align: center;
-    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-weight: 600;
+
+    img{
+      width: 10px;
+    }
   }
 `
 
