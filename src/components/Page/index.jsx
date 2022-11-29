@@ -5,24 +5,29 @@ import { TodoForm } from "../TodoForm";
 import { List } from "../list";
 import { SearchedTasks } from "../searchedTasks";
 import { ModalModifyTask } from '../modalModifyTask';
+import { ThemeProvider } from "styled-components";
 
 export function Page() {
-  const { modeSearch, modalModifyTaskIsVisible } = useContext(TodoContext);
+  const { modeSearch, modalModifyTaskIsVisible, theme } = useContext(TodoContext);
 
   return (
-    <section>
-      <Header />
+    <ThemeProvider theme={theme}>
+      <section>
+        <Header />
 
-      {modeSearch ? (
-          <SearchedTasks />
-      ) : (
-        <>
-          <TodoForm />
-          <List />
-        </>
-      )}
+        <main>
+          {modeSearch ? (
+            <SearchedTasks />
+          ) : (
+            <>
+              <TodoForm />
+              <List />
+            </>
+          )}
+        </main>
 
-      {modalModifyTaskIsVisible && <ModalModifyTask />}
-    </section>
+        {modalModifyTaskIsVisible && <ModalModifyTask />}
+      </section>
+    </ThemeProvider>
   );
 }

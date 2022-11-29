@@ -1,6 +1,8 @@
 import React, { useState, createContext } from "react";
 import { useEffect } from "react";
 
+import { dark, light } from "../styles/themes";
+
 export const TodoContext = createContext()
 
 export const TodoProvider = ({ children }) => {
@@ -151,6 +153,13 @@ export const TodoProvider = ({ children }) => {
     DealingWithTasksSearch();
   }
 
+  //Lidando com mudança de temas
+  const [theme, setTheme] = useState(dark)
+
+  const toggleTheme = () => {
+    theme === dark ? setTheme(light) : setTheme(dark)
+  }
+
   useEffect(() => {
     DealingWithTasksNotDone();
     DealingWithTasksDone();
@@ -159,6 +168,7 @@ export const TodoProvider = ({ children }) => {
 
   return (
     <TodoContext.Provider value={{
+      //Lidando com a lista
       list,
       addItemList,
       removeItemList,
@@ -184,7 +194,10 @@ export const TodoProvider = ({ children }) => {
       handleValueSelectImportance,
       setModalModifyTaskIsVisible,
       taskDoneOrNotDone,
-      toggleTaskDoneOrNotDone
+      toggleTaskDoneOrNotDone,
+      //Lidando com a mudança de tema
+      toggleTheme,
+      theme
     }}>
       {children}
     </TodoContext.Provider>
