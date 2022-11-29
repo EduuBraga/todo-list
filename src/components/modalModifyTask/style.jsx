@@ -43,8 +43,8 @@ export const ContainerTop = styled.div`
   border-bottom: 1px solid #90909040;
 
   img{
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     cursor: pointer;
 
     &:active{
@@ -134,8 +134,9 @@ export const ContainerBottom = styled.div`
     }
 
     img{
-      width: 17px;
-      height: 17px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
     }
   }
 `

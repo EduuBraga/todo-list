@@ -1,4 +1,5 @@
 export const dark = {
+  title: 'dark',
   colorMain: '#3071e1',
   colorText: '#f1f1f1',
   bgColor: '#121212',
@@ -10,6 +11,7 @@ export const dark = {
 }
 
 export const light = {
+  title: 'light',
   colorMain: '#3071e1',
   colorText: '#303030',
   bgColor: '#f3f2f1',

@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { TodoContext } from "../../provider";
 
 import imgCheckOffURL from '../../assets/check-off.png';
+import imgCheckOffDarkURL from '../../assets/check-off-dark.png';
 import imgCheckHoverURL from '../../assets/check-hover.png';
 import imgTrashURL from '../../assets/trash.png';
+import imgTrashWhiteURL from '../../assets/trash-light.png';
 import imgTrashRedURL from '../../assets/trash-red.png';
 import imgFlagURL from '../../assets/flag.png';
 
@@ -19,13 +21,18 @@ export const TasksNotDone = ({ task }) => {
   const {
     toggleDoneTask,
     removeItemList,
-    modifyTask
+    modifyTask,
+    theme
   } = useContext(TodoContext);
 
   return (
     <Container key={task.id} onClick={_ => (modifyTask(event, task.id))}>
       <ButtonCheck onClick={_ => { toggleDoneTask(task.id) }}>
-        <img alt='tarefa não finalizada' src={imgCheckOffURL} />
+        {theme.title === 'light' ? (
+          <img alt='tarefa não finalizada' src={imgCheckOffURL} />
+        ) : (
+          <img alt='tarefa não finalizada' src={imgCheckOffDarkURL} />
+        )}
         <img alt='tarefa não finalizada' src={imgCheckHoverURL} />
       </ButtonCheck>
 
@@ -43,8 +50,17 @@ export const TasksNotDone = ({ task }) => {
       </ContentMain>
 
       <ButtonTrash onClick={_ => { removeItemList(task.id) }}>
-        <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
-        <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+        {theme.title === 'light' ? (
+          <>
+            <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
+            <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+          </>
+        ) : (
+          <>
+            <img title='Deletar tarefa' src={imgTrashWhiteURL} alt='deletar tarefa' />
+            <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+          </>
+        )}
       </ButtonTrash>
     </Container>
   )

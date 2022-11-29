@@ -154,10 +154,10 @@ export const TodoProvider = ({ children }) => {
   }
 
   //Lidando com mudança de temas
-  const [theme, setTheme] = useState(dark)
+  const [theme, setTheme] = useState(light)
 
   const toggleTheme = () => {
-    theme === dark ? setTheme(light) : setTheme(dark)
+    theme.title === "dark" ? setTheme(light) : setTheme(dark)
   }
 
   useEffect(() => {

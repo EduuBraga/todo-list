@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { TodoContext } from "../../provider";
 
 import imgCheckOffURL from '../../assets/check-off.png';
+import imgCheckOffDarkURL from '../../assets/check-off-dark.png';
 import imgCheckOnURL from '../../assets/check-on.png';
 import imgTrashURL from '../../assets/trash.png';
 import imgTrashRedURL from '../../assets/trash-red.png';
+import imgTrashWhiteURL from '../../assets/trash-light.png';
 import imgDisappointedWomanURL from '../../assets/mulher-decepcionada.png';
 import imgFlagURL from '../../assets/flag.png';
 
@@ -25,7 +27,8 @@ export const SearchedTasks = () => {
     toggleDoneTask,
     removeItemList,
     inputSearch,
-    modifyTask
+    modifyTask,
+    theme
   } = useContext(TodoContext);
 
   return (
@@ -40,7 +43,11 @@ export const SearchedTasks = () => {
                 {task.done ? (
                   <img alt='tarefa finalizada' src={imgCheckOnURL} />
                 ) : (
-                  <img alt='tarefa não finalizada' src={imgCheckOffURL} />
+                  theme.title === 'light' ? (
+                    <img alt='tarefa não finalizada' src={imgCheckOffURL} />
+                  ) : (
+                    <img alt='tarefa não finalizada' src={imgCheckOffDarkURL} />
+                  )
                 )}
               </ButtonCheck>
 
@@ -58,8 +65,17 @@ export const SearchedTasks = () => {
               </ContentMain>
 
               <ButtonTrash onClick={() => { removeItemList(task.id) }}>
-                <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
-                <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+                {theme.title === 'light' ? (
+                  <>
+                    <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
+                    <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+                  </>
+                ) : (
+                  <>
+                    <img title='Deletar tarefa' src={imgTrashWhiteURL} alt='deletar tarefa' />
+                    <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+                  </>
+                )}
               </ButtonTrash>
             </ItemListSearched>
           )}

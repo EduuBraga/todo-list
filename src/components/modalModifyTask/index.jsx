@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { TodoContext } from "../../provider";
 
 import imgCheckOffURL from '../../assets/check-off.png';
+import imgCheckOffDarkURL from '../../assets/check-off-dark.png';
 import imgCheckOnURL from '../../assets/check-on.png';
 import imgCloseURL from '../../assets/close.png';
+import imgCloseWhiteURL from '../../assets/close-white.png';
 
 import {
   Card,
@@ -26,7 +28,8 @@ export const ModalModifyTask = () => {
     handleValueSelectImportance,
     setModalModifyTaskIsVisible,
     taskDoneOrNotDone,
-    toggleTaskDoneOrNotDone
+    toggleTaskDoneOrNotDone,
+    theme
   } = useContext(TodoContext);
 
   return (
@@ -35,11 +38,19 @@ export const ModalModifyTask = () => {
         <ContainerTop>
           <h2>Modificar Tarefa</h2>
 
-          <img
-            onClick={_ => { setModalModifyTaskIsVisible(false) }}
-            src={imgCloseURL}
-            alt="Fechar modal"
-          />
+          {theme.title === 'light' ? (
+            <img
+              onClick={_ => { setModalModifyTaskIsVisible(false) }}
+              src={imgCloseURL}
+              alt="Fechar modal"
+            />
+          ) : (
+            <img
+              onClick={_ => { setModalModifyTaskIsVisible(false) }}
+              src={imgCloseWhiteURL}
+              alt="Fechar modal"
+            />
+          )}
         </ContainerTop>
 
         <ContainerInputText>
@@ -77,7 +88,19 @@ export const ModalModifyTask = () => {
             {taskDoneOrNotDone ? (
               <img src={imgCheckOnURL} alt="" onClick={toggleTaskDoneOrNotDone} />
             ) : (
-              <img src={imgCheckOffURL} alt="" onClick={toggleTaskDoneOrNotDone} />
+              theme.title === 'light' ? (
+                <img
+                  alt='tarefa não finalizada'
+                  src={imgCheckOffURL}
+                  onClick={toggleTaskDoneOrNotDone}
+                />
+              ) : (
+                <img
+                  alt='tarefa não finalizada'
+                  src={imgCheckOffDarkURL}
+                  onClick={toggleTaskDoneOrNotDone}
+                />
+              )
             )}
           </div>
 

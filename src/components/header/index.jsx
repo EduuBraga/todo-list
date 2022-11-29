@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { TodoContext } from "../../provider";
 
 import imgSearchURL from '../../assets/search.png';
-import imgCloseSearchURL from '../../assets/close.png';
+import imgCloseBlueURL from '../../assets/close-blue.png';
 import imgSettingsURL from '../../assets/settings.png';
 
 import {
@@ -64,7 +64,7 @@ export const Header = () => {
                 onClick={hiddenFormSearch}
                 title="Sair da pesquisa"
                 alt="Sair da pesquisa"
-                src={imgCloseSearchURL}
+                src={imgCloseBlueURL}
               />
             </WrapperImgClose>
           </FormSearch>

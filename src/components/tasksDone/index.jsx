@@ -4,27 +4,29 @@ import { TodoContext } from "../../provider";
 import imgCheckOnURL from '../../assets/check-on.png';
 import imgTrashURL from '../../assets/trash.png';
 import imgTrashRedURL from '../../assets/trash-red.png';
+import imgTrashWhiteURL from '../../assets/trash-light.png';
 import imgFlagURL from '../../assets/flag.png';
 
-import { 
-  ItemDone, 
-  ButtonCheck, 
-  ButtonTrash, 
-  ContentMain, 
-  StatusTask 
+import {
+  ItemDone,
+  ButtonCheck,
+  ButtonTrash,
+  ContentMain,
+  StatusTask
 } from './style';
 
 export const TasksDone = ({ task }) => {
   const {
     toggleDoneTask,
     removeItemList,
-    modifyTask
+    modifyTask,
+    theme
   } = useContext(TodoContext);
 
   return (
     <ItemDone key={task.id} onClick={_ => (modifyTask(event, task.id))}>
       <ButtonCheck onClick={() => { toggleDoneTask(task.id) }}>
-          <img alt='tarefa finalizada' src={imgCheckOnURL} />
+        <img alt='tarefa finalizada' src={imgCheckOnURL} />
       </ButtonCheck>
 
       <ContentMain taskDone={task.done}>
@@ -41,8 +43,17 @@ export const TasksDone = ({ task }) => {
       </ContentMain>
 
       <ButtonTrash onClick={() => { removeItemList(task.id) }}>
-        <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
-        <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+        {theme.title === 'light' ? (
+          <>
+            <img title='Deletar tarefa' src={imgTrashURL} alt='deletar tarefa' />
+            <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+          </>
+        ) : (
+          <>
+            <img title='Deletar tarefa' src={imgTrashWhiteURL} alt='deletar tarefa' />
+            <img title='Deletar tarefa' src={imgTrashRedURL} alt='deletar tarefa' />
+          </>
+        )}
       </ButtonTrash>
     </ItemDone>
   )
