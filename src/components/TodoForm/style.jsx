@@ -11,6 +11,11 @@ export const Form = styled.form`
   grid: auto / 1fr auto auto;
   gap: 8px;
   width: 95vw;
+
+  @media screen and (max-width: 500px){
+    grid: auto auto auto / auto;
+    margin-bottom: 35px;
+  }
 `
 
 export const InputTask = styled.input`
@@ -33,7 +38,7 @@ export const InputTask = styled.input`
 `
 
 export const SelectedImportanceTask = styled.select`
-  padding: 10px; 
+  padding: 15px;
   border: none;
   outline: none;
   border-radius: 4px;
@@ -54,7 +59,7 @@ export const ButtonForm = styled.button`
   border-radius: 4px;
   color: ${({ isClickable }) => isClickable ? '#3071e1' : ({theme}) => theme.colorText + '90'};
   border: none;
-  padding: 0px 10px;
+  padding: 15px 10px;
   background-color: ${({theme}) => theme.bgColorSecondary};
   box-shadow: ${({theme}) => theme.boxShadowColor} 0px 1px 3px 0px;
   font-weight: 500;

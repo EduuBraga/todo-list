@@ -26,6 +26,7 @@ export const Card = styled.form`
   border-radius: 8px;
   width: 500px;
   position: relative;
+  margin: 0px 12px;
   animation: ${OpacityAnimation} 0.3s ease-in-out;
 
   display: flex;
@@ -55,6 +56,10 @@ export const ContainerTop = styled.div`
   h2{
     font-size: 1.5em;
     color: ${({theme}) => theme.colorText};
+
+    @media screen and (max-width: 500px){
+      font-size: 1.3em;
+    }
   }
 `
 

@@ -14,6 +14,10 @@ export const Title = styled.h1`
   margin: 10px 5px 10px 35px;
   color: #f5f5f5;
   font-size: 20px;
+
+  @media screen and (max-width: 500px){
+    margin: 10px 5px 10px 15px;
+  }
 `
 
 export const ContainerLeft = styled.div`
@@ -57,6 +61,10 @@ export const FormSearch = styled.form`
     border:none ;
     outline: none;
     padding: 6px 5px;
+
+    @media screen and (max-width: 500px){
+      width: 30vw;
+    }
   }
 `
 
@@ -84,6 +92,11 @@ export const ContainerRight = styled.div`
     width: 22px;
     height: 22px;
     padding: 0px;
+
+    @media screen and (max-width: 500px){
+      width: 18px;
+      height: 18px;
+    }
     
     &:active{
       transform: scale(0.95);

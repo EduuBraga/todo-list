@@ -105,7 +105,12 @@ export const ButtonTrash = styled.button`
   }
 
   img {
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
+
+    @media screen and (max-width: 500px){
+      width: 20px;
+      height: 20px;
+    }
   }
 `
