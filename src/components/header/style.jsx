@@ -53,6 +53,7 @@ export const FormSearch = styled.form`
 
   input{
     background-color: ${({theme}) => theme.bgColorSecondary};
+    color: ${({theme}) => theme.colorText};
     border:none ;
     outline: none;
     padding: 6px 5px;
@@ -71,21 +72,21 @@ export const WrapperImgClose = styled.div`
   }
 `
 
-export const Settings = styled.div`
+export const ContainerRight = styled.div`
   width: 50px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 14px 0px;
-
-  &:hover{
-    background-color: #55555590;
-  }
+  padding: 0px 0px;
 
   img{
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     padding: 0px;
+    
+    &:active{
+      transform: scale(0.95);
+    }
   }
 `
