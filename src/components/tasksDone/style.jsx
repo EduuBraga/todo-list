@@ -17,10 +17,10 @@ export const ItemDone = styled.li`
   cursor: pointer;
   margin: 7px 0px;
   padding: 10px;
-  box-shadow: #ccc 0px 1px 3px 0px;
-  color: #404040;
+  box-shadow: ${({theme}) => theme.boxShadowColor} 0px 1px 3px 0px;
+  color: ${({theme}) => theme.colorText};
   border-radius: 4px;
-  background-color: #f7f7f7;
+  background-color: ${({theme}) => theme.bgColorSecondary};
   
   overflow-wrap: break-word;  
   word-wrap: break-word; 
@@ -31,7 +31,7 @@ export const ItemDone = styled.li`
   position: relative;
 
   &:hover {
-    background-color: #efefef;
+    background-color: ${({theme}) => theme.hoverButtonColor};
   }
 `
 

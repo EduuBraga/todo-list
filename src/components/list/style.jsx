@@ -23,7 +23,7 @@ export const HeaderListTasksDone = styled.div`
   justify-content: flex-start;
   gap: 8px;
   align-items: center;
-  color: #303030;
+  color: ${({theme}) => theme.colorText};
   padding: 8px 12px 8px 0px;
   border-bottom: ${({ tasksDoneisVisible }) =>
     tasksDoneisVisible === true ? 'none' : '0.5px solid #bbb'

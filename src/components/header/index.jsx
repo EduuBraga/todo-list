@@ -8,7 +8,7 @@ import imgSettingsURL from '../../assets/settings.png';
 import {
   Container,
   Title,
-  ContainerRight,
+  ContainerLeft,
   SectionFormSearch,
   ImgSearch,
   FormSearch,
@@ -39,7 +39,7 @@ export const Header = () => {
 
   return (
     <Container>
-      <ContainerRight>
+      <ContainerLeft>
         <Title>To Do</Title>
 
         <SectionFormSearch>
@@ -69,7 +69,7 @@ export const Header = () => {
             </WrapperImgClose>
           </FormSearch>
         </SectionFormSearch>
-      </ContainerRight>
+      </ContainerLeft>
 
       <Settings>
         <img

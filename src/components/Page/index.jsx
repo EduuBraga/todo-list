@@ -6,6 +6,7 @@ import { List } from "../list";
 import { SearchedTasks } from "../searchedTasks";
 import { ModalModifyTask } from '../modalModifyTask';
 import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from '../../styles/GlobalStyle';
 
 export function Page() {
   const { modeSearch, modalModifyTaskIsVisible, theme } = useContext(TodoContext);
@@ -28,6 +29,8 @@ export function Page() {
 
         {modalModifyTaskIsVisible && <ModalModifyTask />}
       </section>
+
+      <GlobalStyle />
     </ThemeProvider>
   );
 }

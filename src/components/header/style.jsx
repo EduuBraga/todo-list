@@ -1,29 +1,28 @@
 import styled from 'styled-components'
 
 export const Container = styled.header`
-  background-color: #3071e1;
+  background-color: ${({theme}) => theme.bgColorTertiary};
   margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  /* padding: 4px 0px; */
 `
 
 export const Title = styled.h1`
-  margin: 10px 5px 10px 15px;
-  color: white;
+  margin: 10px 5px 10px 35px;
+  color: #f5f5f5;
   font-size: 20px;
 `
 
-export const ContainerRight = styled.div`
+export const ContainerLeft = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 `
 
 export const SectionFormSearch = styled.section`
-  background-color: #fff;
+  background-color: ${({theme}) => theme.bgColorSecondary};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,7 +38,7 @@ export const SectionFormSearch = styled.section`
 export const ImgSearch = styled.img`
   width: 30px;
   height: 30px;
-  background-color: #fafafa;
+  background-color: ${({theme}) => theme.bgColorSecondary};
   padding: 7px;
   border-radius: 4px;
   cursor: pointer;
@@ -52,6 +51,7 @@ export const FormSearch = styled.form`
   animation: mostrarSearch 1s ease-in-out;
 
   input{
+    background-color: ${({theme}) => theme.bgColorSecondary};
     border:none ;
     outline: none;
     padding: 6px 5px;
@@ -79,12 +79,12 @@ export const Settings = styled.div`
   padding: 14px 0px;
 
   &:hover{
-    background-color: rgba(0, 0, 0, 0.221);
+    background-color: #55555590;
   }
 
   img{
-    width: 21px;
-    height: 21px;
+    width: 18px;
+    height: 18px;
     padding: 0px;
   }
 `

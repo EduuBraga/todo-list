@@ -3,7 +3,9 @@ export const dark = {
   colorText: '#f1f1f1',
   bgColor: '#181818',
   bgColorSecondary: '#363636',
-  bgColorTertiary: '#282828'
+  bgColorTertiary: '#222222',
+  boxShadowColor: '#00000000',
+  hoverButtonColor: '#303030'
 }
 
 export const light = {
@@ -11,5 +13,7 @@ export const light = {
   colorText: '#303030',
   bgColor: '#f3f2f1',
   bgColorSecondary: '#f7f7f7',
-  bgColorTertiary: '#3071e1'
+  bgColorTertiary: '#3071e1',
+  boxShadowColor: '#ccc',
+  hoverButtonColor: '#eff1fa'
 }

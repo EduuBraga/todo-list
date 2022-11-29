@@ -22,7 +22,7 @@ export const Container = styled.section`
 `
 
 export const Card = styled.form`
-  background-color: #f3f2f1;
+  background-color: ${({theme}) => theme.bgColor};
   border-radius: 8px;
   width: 500px;
   position: relative;
@@ -54,7 +54,7 @@ export const ContainerTop = styled.div`
 
   h2{
     font-size: 1.5em;
-    color: #303030;
+    color: ${({theme}) => theme.colorText};
   }
 `
 
@@ -70,7 +70,7 @@ export const ContainerInputText = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.7px;
-    color: #303030;
+    color: ${({theme}) => theme.colorText};
   }
 `
 
@@ -78,10 +78,10 @@ export const InputTask = styled.input`
   padding: 15px;
   border: none;
   border-radius: 4px;
-  box-shadow: #ccc 0px 1px 3px 0px;
-  background-color: #f7f7f7;
+  box-shadow: ${({theme}) => theme.boxShadowColor} 0px 1px 3px 0px;
+  background-color: ${({theme}) => theme.bgColorSecondary};
   outline: none;
-  color: #101010;
+  color: ${({theme}) => theme.colorText};
   font-weight: 500;
 `
 
@@ -97,7 +97,7 @@ export const ContainerSelectImportance = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #303030;
+    color: ${({theme}) => theme.colorText};
   }
 `
 
@@ -106,10 +106,10 @@ export const SelectedImportanceTask = styled.select`
   border: none;
   outline: none;
   border-radius: 4px;
-  box-shadow: #ccc 0px 1px 3px 0px;
-  background-color: #f7f7f7;
+  box-shadow: ${({theme}) => theme.boxShadowColor} 0px 1px 3px 0px;
+  background-color: ${({theme}) => theme.bgColorSecondary};
   font-size: 13px;
-  color: #101010;
+  color: ${({theme}) => theme.colorText};
   font-weight: 500;
   cursor: pointer;
 `
@@ -130,7 +130,7 @@ export const ContainerBottom = styled.div`
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: #303030;
+      color: ${({theme}) => theme.colorText};
     }
 
     img{
@@ -143,15 +143,15 @@ export const ContainerBottom = styled.div`
 export const Button = styled.button`
   cursor: pointer;
   border-radius: 4px;
-  color: #3071e1;
+  color: ${({theme}) => theme.colorMain};
   border: none;
   padding: 12px 10px;
-  background-color: #f7f7f7;
-  box-shadow: #dcd 0px 1px 3px 0px;
+  background-color: ${({theme}) => theme.bgColorSecondary};
+  box-shadow: ${({theme}) => theme.boxShadowColor} 0px 1px 3px 0px;
   font-weight: 500;
   transition: background 0.3s;
 
   &:hover{
-    background-color: #eff1fa;
+    background-color: ${({theme}) => theme.hoverButtonColor};
   }
 `
