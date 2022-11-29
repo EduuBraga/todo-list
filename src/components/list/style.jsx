@@ -25,8 +25,11 @@ export const HeaderListTasksDone = styled.div`
   align-items: center;
   color: ${({theme}) => theme.colorText};
   padding: 8px 12px 8px 0px;
+  border-bottom-color: ${({theme}) => theme.borderBottom};
+  border-bottom-width: 0.5px;
+  border-bottom-style: solid;
   border-bottom: ${({ tasksDoneisVisible }) =>
-    tasksDoneisVisible === true ? 'none' : '0.5px solid #bbb'
+    tasksDoneisVisible === true ? 'none' : ''
   };
 
   h4{

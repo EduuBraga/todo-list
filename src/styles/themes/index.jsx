@@ -1,11 +1,12 @@
 export const dark = {
   colorMain: '#3071e1',
   colorText: '#f1f1f1',
-  bgColor: '#181818',
-  bgColorSecondary: '#363636',
-  bgColorTertiary: '#222222',
+  bgColor: '#121212',
+  bgColorSecondary: '#323232',
+  bgColorTertiary: '#181818',
   boxShadowColor: '#00000000',
-  hoverButtonColor: '#303030'
+  hoverButtonColor: '#303030',
+  borderBottom: '#323232'
 }
 
 export const light = {
@@ -15,5 +16,6 @@ export const light = {
   bgColorSecondary: '#f7f7f7',
   bgColorTertiary: '#3071e1',
   boxShadowColor: '#ccc',
-  hoverButtonColor: '#eff1fa'
+  hoverButtonColor: '#eff1fa',
+  borderBottom: '#ccc'
 }

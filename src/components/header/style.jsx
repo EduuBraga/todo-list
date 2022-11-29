@@ -7,6 +7,7 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  border-bottom: 1px solid ${({theme}) => theme.borderBottom};
 `
 
 export const Title = styled.h1`
