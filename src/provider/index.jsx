@@ -154,18 +154,17 @@ export const TodoProvider = ({ children }) => {
   //Buscando estados salvos na memória local
   useEffect(() => {
     const listSaved = JSON.parse(localStorage.getItem('list'));
-    if (listSaved !== null) setList(listSaved);
-
-    const themeSaved = JSON.parse(localStorage.getItem('theme'));
-    if (themeSaved !== null) setTheme(themeSaved);
-
-    if (listSaved.length >= 1) {
+    if (listSaved !== null) {
       const maxIdTask = listSaved.reduce(function (prev, task) {
         return (prev.id > task.id) ? prev.id : task.id;
       }, 0);
 
       setIdTask(maxIdTask + 1);
+      setList(listSaved);
     }
+
+    const themeSaved = JSON.parse(localStorage.getItem('theme'));
+    if (themeSaved !== null) setTheme(themeSaved);
   }, [])
 
   // Ordenando a lista sempre quando mexida & Salvando itens na memória.
