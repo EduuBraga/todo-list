@@ -158,6 +158,14 @@ export const TodoProvider = ({ children }) => {
 
     const themeSaved = JSON.parse(localStorage.getItem('theme'));
     if (themeSaved !== null) setTheme(themeSaved);
+
+    if (listSaved.length >= 1) {
+      const maxIdTask = listSaved.reduce(function (prev, task) {
+        return (prev.id > task.id) ? prev.id : task.id;
+      }, 0);
+
+      setIdTask(maxIdTask + 1);
+    }
   }, [])
 
   // Ordenando a lista sempre quando mexida & Salvando itens na memória.
