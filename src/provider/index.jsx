@@ -130,7 +130,7 @@ export const TodoProvider = ({ children }) => {
       if (descriptionTaskLowerCase.includes(valueInputLowerCase)) {
         return task;
       }
-    })
+    });
 
     const OrderTasksMatchByImportance = tasksMatchSearch
       .sort((task1, task2) => task2.importance - task1.importance);
@@ -145,18 +145,30 @@ export const TodoProvider = ({ children }) => {
   }
 
   //Lidando com mudança de temas
-  const [theme, setTheme] = useState(light)
+  const [theme, setTheme] = useState(dark);
 
   const toggleTheme = () => {
-    theme.title === "dark" ? setTheme(light) : setTheme(dark)
+    theme.title === "dark" ? setTheme(light) : setTheme(dark);
   }
 
-  //Ordenando a lista sempre quando mexida
+  //Buscando estados salvos na memória local
+  useEffect(() => {
+    const listSaved = JSON.parse(localStorage.getItem('list'));
+    if (listSaved !== null) setList(listSaved);
+
+    const themeSaved = JSON.parse(localStorage.getItem('theme'));
+    if (themeSaved !== null) setTheme(themeSaved);
+  }, [])
+
+  // Ordenando a lista sempre quando mexida & Salvando itens na memória.
   useEffect(() => {
     DealingWithTasksNotDone();
     DealingWithTasksDone();
     DealingWithTasksSearch();
-  }, [list, taskModify])
+
+    localStorage.setItem('list', JSON.stringify(list));
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }, [list, taskModify, theme]);
 
   return (
     <TodoContext.Provider value={{
