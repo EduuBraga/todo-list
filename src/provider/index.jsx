@@ -1,9 +1,7 @@
-import React, { useState, createContext } from "react";
-import { useEffect } from "react";
-
+import React, { useState, createContext, useEffect } from "react";
 import { dark, light } from "../styles/themes";
 
-export const TodoContext = createContext()
+export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
   const [list, setList] = useState([]);
@@ -75,16 +73,17 @@ export const TodoProvider = ({ children }) => {
   const [taskDoneOrNotDone, setTaskDoneOrNotDone] = useState(false)
 
   const modifyTask = (event, idElementClicked) => {
-    const TagNameElementClicked = event.target.tagName
+    const { tagName } = event.target
 
-    if(TagNameElementClicked !== 'IMG'){
+    const tagsNoShootEvent = ['IMG', 'BUTTON']
+    const shotEvent = !tagsNoShootEvent.includes(tagName)
+
+    if (shotEvent) {
       const listCopy = [...list];
 
-      const filteredTaskClicked = listCopy
+      const taskClicked = listCopy
         .filter(task => task.id === idElementClicked)[0];
-  
-      const taskClicked = { ...filteredTaskClicked };
-  
+
       setModalModifyTaskIsVisible(true);
       setInputModalModifyTask(taskClicked.description);
       setSelectModaModifyTask(taskClicked.importance);
@@ -96,16 +95,10 @@ export const TodoProvider = ({ children }) => {
   const handleSubmitModal = event => {
     event.preventDefault();
 
-    list.map(task => {
-      if(task.id === taskModify.id){
-        task.id = taskModify.id;
-        task.date = taskModify.date;
-        task.description = inputModalModifyTask;
-        task.importance = Number(selectModalModifyTask);
-        task.done = taskDoneOrNotDone;
-        setTaskModify({});
-      }
-    });
+    taskModify.description = inputModalModifyTask;
+    taskModify.importance = Number(selectModalModifyTask);
+    taskModify.done = taskDoneOrNotDone;
+    setTaskModify({});
 
     setModalModifyTaskIsVisible(false)
   }
@@ -145,11 +138,9 @@ export const TodoProvider = ({ children }) => {
     setListTasksSearched(OrderTasksMatchByImportance);
   }
 
-  const handleValueInputSearch = (event) => {
-    const valueInput = event.target.value;
-    setInputSearch(valueInput);
+  const handleValueInputSearch = event => {
+    setInputSearch(event.target.value);
     setModeSearch(true);
-
     DealingWithTasksSearch();
   }
 
@@ -160,6 +151,7 @@ export const TodoProvider = ({ children }) => {
     theme.title === "dark" ? setTheme(light) : setTheme(dark)
   }
 
+  //Ordenando a lista sempre quando mexida
   useEffect(() => {
     DealingWithTasksNotDone();
     DealingWithTasksDone();

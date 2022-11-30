@@ -43,6 +43,10 @@ export const ContainerTop = styled.div`
   align-items: center;
   border-bottom: 1px solid #90909040;
 
+  @media screen and (max-width: 500px){
+    padding: 20px;
+  }
+
   img{
     width: 17px;
     height: 17px;
@@ -66,9 +70,13 @@ export const ContainerTop = styled.div`
 export const ContainerInputText = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px 30px 18px 30px;
+  padding: 10px 30px;
   gap: 4px;
   width: 100% ;
+
+  @media screen and (max-width: 500px){
+    padding: 10px 20px;
+  }
 
   label{
     font-size: 14px;
@@ -93,9 +101,13 @@ export const InputTask = styled.input`
 export const ContainerSelectImportance = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px 30px 18px 30px;
+  padding: 10px 30px;
   gap: 4px;
   width: 100% ;
+
+  @media screen and (max-width: 500px){
+    padding: 10px 20px;
+  }
 
   label{
     font-size: 14px;
@@ -124,7 +136,11 @@ export const ContainerBottom = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  padding: 10px 30px 18px 30px;
+  padding: 10px 30px 40px 30px;
+
+  @media screen and (max-width: 500px){
+    padding: 10px 20px 30px 20px;
+  }
 
   div{
     display: flex;

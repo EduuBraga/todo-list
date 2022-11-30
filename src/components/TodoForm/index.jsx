@@ -25,8 +25,8 @@ export const TodoForm = () => {
   }
 
   function handleValueSelectImportance(event) {
-    const valueSelect = event.target.value;
-    const valueStringToNumber = Number(valueSelect);
+    const { value } = event.target;
+    const valueStringToNumber = Number(value);
 
     setValueInputImportance(valueStringToNumber);
   }
@@ -36,9 +36,8 @@ export const TodoForm = () => {
     setDateTask(currentDate);
   }
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-
     handleCurrentDate();
 
     if (valueInputTask) {

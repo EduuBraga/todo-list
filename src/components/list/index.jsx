@@ -7,20 +7,26 @@ import imgArrowRightWhiteURL from '../../assets/arrow-right-white.png';
 import { TasksNotDone } from '../tasksNotDone';
 import { TasksDone } from '../tasksDone';
 
-import { Container, ListTasksNotDone, ListTasksDone, HeaderListTasksDone } from './style';
+import {
+  Container,
+  ListTasksNotDone,
+  ListTasksDone,
+  HeaderListTasksDone
+} from './style';
 
 export function List() {
-  const { 
-    tasksDone, 
-    tasksNotDone, 
+  const {
+    tasksDone,
+    tasksNotDone,
     quantityTasksDone,
-    theme 
+    theme
   } = useContext(TodoContext);
+
   const [show_hiddenTasksDone, setShow_hiddenTasksDone] = useState(false);
 
   const toggleShowHiddenTasksDone = () => {
-    show_hiddenTasksDone ? setShow_hiddenTasksDone(false)
-      : setShow_hiddenTasksDone(true);
+    show_hiddenTasksDone ?
+      setShow_hiddenTasksDone(false) : setShow_hiddenTasksDone(true);
   }
 
   return (

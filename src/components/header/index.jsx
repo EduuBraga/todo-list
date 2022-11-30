@@ -3,7 +3,6 @@ import { TodoContext } from "../../provider";
 
 import imgSearchURL from '../../assets/search.png';
 import imgCloseBlueURL from '../../assets/close-blue.png';
-import imgSettingsURL from '../../assets/settings.png';
 import imgMoonURL from '../../assets/moon.png';
 import imgSunURL from '../../assets/sun.png';
 
@@ -41,6 +40,10 @@ export const Header = () => {
     setInputSearch('');
   }
 
+  const onSubmitFormSearch = () => {
+    event.preventDefault()
+  }
+
   return (
     <Container>
       <ContainerLeft>
@@ -54,7 +57,10 @@ export const Header = () => {
             src={imgSearchURL}
           />
 
-          <FormSearch formIsVisible={formSearchIsVisible}>
+          <FormSearch
+            onSubmit={onSubmitFormSearch}
+            formIsVisible={formSearchIsVisible}
+          >
             <input
               onChange={handleValueInputSearch}
               value={inputSearch}

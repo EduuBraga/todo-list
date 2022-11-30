@@ -11,10 +11,10 @@ export const Form = styled.form`
   grid: auto / 1fr auto auto;
   gap: 8px;
   width: 95vw;
+  margin-bottom: 35px;
 
   @media screen and (max-width: 500px){
     grid: auto auto auto / auto;
-    margin-bottom: 35px;
   }
 `
 
