@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${({theme}) => theme.bgColor};
+    background-color: ${({ theme }) => theme.bgColor};
   }
 
   ::-webkit-scrollbar {
@@ -17,7 +17,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.457);
-    border-radius: 5px;
+    
+    background: ${({ theme }) => theme.title === 'light' ?
+      '#20202030' : '#303030'
+    };
   }
 `
